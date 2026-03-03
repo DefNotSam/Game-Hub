@@ -78,8 +78,6 @@ Games/
 ├── FlappyBird.html     # Flappy Bird Game
 ├── Pong.html           # PONG Game
 ├── README.md           # This file
-├── FlappyBird.py       # (Legacy Python version)
-└── Pong.py             # (Legacy Python version)
 ```
 
 ---
@@ -154,7 +152,7 @@ Built with:
 ## 🎓 How to Run
 
 **Option 1: Direct File**
-- Simply open any(preferabbly 'index.html' for homepage) `.html` file directly in your browser
+- Simply open any(preferabbly `index.html` for homepage) `.html` file directly in your browser
 
 **Option 2: Local Server** (Recommended for best experience)
 ```bash
