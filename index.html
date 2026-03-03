@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Game Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 80px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            color: #ffffcc;
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1.2s ease-in;
+        }
+
+        .games-grid {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            min-width: 300px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-card.flappy {
+            border: 4px solid #FFD700;
+        }
+
+        .game-card.flappy:hover {
+            background: linear-gradient(135deg, #fff5e6 0%, #fffaf0 100%);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
+        }
+
+        .game-card.pong {
+            border: 4px solid #00ffff;
+        }
+
+        .game-card.pong:hover {
+            background: linear-gradient(135deg, #e0f7ff 0%, #f0faff 100%);
+            box-shadow: 0 20px 60px rgba(0, 255, 255, 0.4);
+        }
+
+        .game-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .game-card.pong .game-icon {
+            animation: spin 3s infinite linear;
+        }
+
+        .game-title {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .game-description {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-button:active {
+            transform: scale(0.98);
+        }
+
+        .flappy .play-button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #333;
+        }
+
+        .pong .play-button {
+            background: linear-gradient(135deg, #00ffff 0%, #0088ff 100%);
+            color: #000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .footer {
+            color: #ffffff;
+            font-size: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1.4s ease-in;
+        }
+
+        .footer a {
+            color: #ffffcc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 50px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .games-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .game-card {
+                min-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 GAME HUB</h1>
+        <p class="subtitle">Choose your adventure!</p>
+
+        <div class="games-grid">
+            <!-- Flappy Bird Card -->
+            <div class="game-card flappy">
+                <div class="game-icon">🐦</div>
+                <h2 class="game-title">Flappy Bird</h2>
+                <p class="game-description">
+                    Navigate through the pipes and avoid obstacles. 
+                    How high can you score?
+                </p>
+                <a href="FlappyBird.html" class="play-button">PLAY NOW</a>
+            </div>
+
+            <!-- Pong Card -->
+            <div class="game-card pong">
+                <div class="game-icon">🎾</div>
+                <h2 class="game-title">PONG</h2>
+                <p class="game-description">
+                    Challenge a friend in this classic arcade game. 
+                    Paddle faster than your opponent!
+                </p>
+                <a href="Pong.html" class="play-button">PLAY NOW</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Made with ❤️ | Have fun! 🚀</p>
+        </div>
+    </div>
+</body>
+</html>
